@@ -1,3 +1,18 @@
+GIT
+  remote: https://github.com/arr2036/omnigollum.git
+  revision: 4dfaf52af6175d09861d53ee3b4c98bdaf575039
+  specs:
+    omnigollum (0.1.0)
+      gollum
+      mustache
+      omniauth
+
+GIT
+  remote: https://github.com/defunkt/mustache.git
+  revision: 5fa960715c4122857478bd3808eb135bacf325d7
+  specs:
+    mustache (0.99.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -24,9 +39,12 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
+    hashie (1.2.0)
     mime-types (1.22)
-    mustache (0.99.4)
     nokogiri (1.5.9)
+    omniauth (1.1.3)
+      hashie (~> 1.2)
+      rack
     posix-spawn (0.3.6)
     pygments.rb (0.2.13)
       rubypython (~> 0.5.3)
@@ -50,4 +68,7 @@ PLATFORMS
 
 DEPENDENCIES
   gollum
+  mustache!
+  omniauth
+  omnigollum!
   rack (= 1.1.0)
