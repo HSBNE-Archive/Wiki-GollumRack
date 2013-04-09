@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Arran Cudbard-Bell", "Tenshi Hinanawi"]
-  s.date = "2013-04-08"
+  s.date = "2013-04-09"
   s.description = "Omnigollum adds support for OmniAuth in Gollum. It executes an OmniAuth::Builder proc/block to figure out which providers you've configured, then passes it on to omniauth to create the actual omniauth configuration.\n\nSee https://github.com/arr2036/omnigollum for usage instructions.\n"
   s.email = "cockmomgler@gmail.com"
   s.extra_rdoc_files = ["Readme.md", "LICENSE"]
