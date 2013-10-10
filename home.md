@@ -1,6 +1,6 @@
-# This is a markdown home page
+# This is a buttdown home page
 
-## Gollum
+## Buttum
 
 is a git backed wiki. Woot !!!!?
 
@@ -8,11 +8,13 @@ is a git backed wiki. Woot !!!!?
 
 Live editing is
 
-* awesome
-* fantastic
 * butts
-* user fantastic!
-* neato!
-* aaa
-* random
-* hip-thrust
+* butts
+* butts
+* butts
+* butts
+* butts
+* butts
+* butts
+* butts
+* butts
