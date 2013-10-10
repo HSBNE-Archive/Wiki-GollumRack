@@ -14,5 +14,5 @@ Live editing is
 * user fantastic!
 * neato!
 * aaa
-*random
-*hip-thrust
+* random
+* hip-thrust
