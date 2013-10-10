@@ -6,6 +6,8 @@ is a git backed wiki. Woot !!!!?
 
 ## Check it out
 
+Whoever made the last edit seems cocksure.
+
 Live editing is
 
 * butts
