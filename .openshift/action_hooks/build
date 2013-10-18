@@ -6,8 +6,8 @@
 
 export
 
-cd $BARE_REPO
-# to set the Git user we need to manually edit the config file. Using 'git config user.name "John Doe" does not work
-echo "[user]" >> config
-echo "        name = Anonymous Coward" >> config
-echo "        email = anonymouscoward@mailinator.com" >> config
+#cd $BARE_REPO
+## to set the Git user we need to manually edit the config file. Using 'git config user.name "John Doe" does not work
+#echo "[user]" >> config
+#echo "        name = Anonymous Coward" >> config
+#echo "        email = anonymouscoward@mailinator.com" >> config
