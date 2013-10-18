@@ -24,7 +24,12 @@ require "gollum/frontend/app"
   #[username, password] == ['wiki', 'wiki']
 #end
 
-Precious::App.set(:gollum_path, '/var/lib/openshift/51626b15e0b8cdc04d000251/git/gollum.git')
-#Precious::App.set(:gollum_path, '.')
+if ENV[OPENSHIFT_APP_NAME].present?:
+  #Precious::App.set(:gollum_path, '/var/lib/openshift/51626b15e0b8cdc04d000251/git/gollum.git')
+  Precious::App.set(:gollum_path, '#{ENV[OPENSHIFT_HOMEDIR]}/git/#{ENV[OPENSHIFT_APP_NAME]}.git')
+else
+  Precious::App.set(:gollum_path, '.')
+end
+
 Precious::App.set(:wiki_options, {})
 run Precious::App
