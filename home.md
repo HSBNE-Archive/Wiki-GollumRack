@@ -1,22 +1,18 @@
-# This is a buttdown home page
+# This is a markdown home page
 
-## Buttum
+## Gollum
 
 is a git backed wiki. Woot !!!!?
 
 ## Check it out
 
-Whoever made the last edit seems cocksure.
-
 Live editing is
 
+* awesome
+* fantastic
 * butts
-* butts
-* butts
-* butts
-* butts
-* butts
-* butts
-* butts
-* butts
-* butts
+* user fantastic!
+* neato!
+* aaa
+* random
+* hip-thrust
