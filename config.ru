@@ -7,15 +7,15 @@ require "gollum/frontend/app"
 #require 'omniauth/strategies/open_id'
 
 #options = {
-  ## OmniAuth::Builder block is passed as a proc
-  #:providers => Proc.new do
-    ##provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
-    ##provider :open_id, OpenID::Store::Filesystem.new('/tmp')
-  #end,
-  #:dummy_auth => false
+#  # OmniAuth::Builder block is passed as a proc
+#  :providers => Proc.new do
+#    #provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+#    #provider :open_id, OpenID::Store::Filesystem.new('/tmp')
+#  end,
+#  :dummy_auth => false
 #}
 
-## :omnigollum options *must* be set before the Omnigollum extension is registered
+# :omnigollum options *must* be set before the Omnigollum extension is registered
 #Precious::App.set(:omnigollum, options)
 
 #Precious::App.register Omnigollum::Sinatra
