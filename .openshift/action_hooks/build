@@ -20,6 +20,7 @@ then
   mkdir $GOLLUM_PATH
   cd $GOLLUM_PATH
   git init
-  echo "Datastore available at:"
-  echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/${GOLLUM_PATH%%${OPENSHIFT_HOMEDIR}}"
 fi
+
+echo "Datastore available at:"
+echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/${GOLLUM_PATH##${$OPENSHIFT_HOMEDIR}}"
