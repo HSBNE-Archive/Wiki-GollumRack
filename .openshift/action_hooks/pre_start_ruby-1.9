@@ -16,12 +16,13 @@
 #SCRIPT_PATH=$(dirname `which $0`)
 
 echo
-echo "# arguments called with ---->  ${@}     "
-echo "# \$1 ---------------------->  $1       "
-echo "# \$2 ---------------------->  $2       "
-echo "# path to me --------------->  ${0}     "
-echo "# parent path -------------->  ${0%/*}  "
-echo "# my name ------------------>  ${0##*/} "
+echo "# arguments called with ---->  ${@}           "
+echo "# \$1 ---------------------->  $1             "
+echo "# \$2 ---------------------->  $2             "
+echo "# path to me --------------->  ${0}           "
+echo "# parent path -------------->  ${0%/*}        "
+echo "# my name ------------------>  ${0##*/}       "
+echo "# BASH_SOURCE -------------->  ${BASH_SOURCE} "
 echo
 #echo $SCRIPT_PATH
 #cat $SCRIPT_PATH/env
