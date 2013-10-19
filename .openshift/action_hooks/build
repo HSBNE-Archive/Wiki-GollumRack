@@ -6,15 +6,13 @@
 
 # export
 
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
-
 cd $OPENSHIFT_HOMEDIR/git/$OPENSHIFT_APP_NAME.git
 echo "DIR changed to:"
 echo $(pwd)
 git config user.name "Anonymous Coward"
 git config user.email "anonymouscoward@mailinator.com"
 
-source $SCRIPTPATH/env
+source ./env
 
 if [ ! -d $GOLLUM_PATH ];
 then
