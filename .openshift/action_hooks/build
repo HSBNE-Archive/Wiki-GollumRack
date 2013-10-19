@@ -12,7 +12,12 @@ echo $(pwd)
 git config user.name "Anonymous Coward"
 git config user.email "anonymouscoward@mailinator.com"
 
-source ./env
+
+SCRIPT_PATH=$(dirname `which $0`)
+
+echo $SCRIPT_PATH
+
+source $SCRIPT_PATH/env
 
 if [ ! -d $GOLLUM_PATH ];
 then

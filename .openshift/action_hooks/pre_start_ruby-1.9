@@ -13,5 +13,8 @@
 # Application start and stop is subject to different timeouts
 # throughout the system.
 
-cat ./env
-source ./env
+SCRIPT_PATH=$(dirname `which $0`)
+
+echo $SCRIPT_PATH
+cat $SCRIPT_PATH/env
+source $SCRIPT_PATH/env
