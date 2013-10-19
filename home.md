@@ -2,17 +2,6 @@
 
 ## Gollum
 
-is a git backed wiki. Woot !!!!?
+I'm totally hacking on the application behind this right now.
 
-## Check it out
-
-Live editing is
-
-* awesome
-* fantastic
-* butts
-* user fantastic!
-* neato!
-* aaa
-* random
-* hip-thrust
+It will be up and down more than your mum last night. Hold tight!
