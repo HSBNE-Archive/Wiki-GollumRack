@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+BASEPATH=$SCRIPTPATH/../
+
+cd $BASEPATH
+
+MARKER=.openshift/markers/force_clean_build
+
+if [ -f $MARKER ]
+then
+  git rm $MARKER &>/dev/null
+  git commit -m "Do Not Clean Build" &>/dev/null
+
+else
+  echo "Could not remove marker, didn't exist"
+fi
