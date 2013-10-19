@@ -40,6 +40,7 @@ GEM
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
     hashie (2.0.5)
+    liquid (2.5.3)
     mime-types (1.25)
     mini_portile (0.5.1)
     nokogiri (1.6.0)
@@ -69,6 +70,7 @@ PLATFORMS
 
 DEPENDENCIES
   gollum
+  liquid
   mustache!
   omniauth
   omnigollum!

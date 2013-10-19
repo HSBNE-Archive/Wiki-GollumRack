@@ -6,6 +6,7 @@ source 'http://mirror1.ops.rhcloud.com/mirror/ruby/'
 
 # gem "rails"
 gem 'rack', '1.1.0'
+gem 'liquid'
 gem 'gollum'
 gem 'mustache', :git => 'https://github.com/defunkt/mustache.git'
 gem 'omniauth'
