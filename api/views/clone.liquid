@@ -5,8 +5,6 @@ BASEPATH=$(pwd)
 echo "## Cloning the Gollum Wiki Application"
 git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/{{ env.GOLLUM_APP_URL }} gollum
 
-cd $BASEPATH
-
 echo "## Cloning the Gollum Wiki Data"
 git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/{{ env.GOLLUM_DATA_URL }} gollum-data
 
@@ -14,4 +12,4 @@ echo "You've cloned the HSBNE Wiki!"
 echo ""
 echo "I'm going to open the README for you, press a key to continue"
 read -n 1
-less README.md
+less gollum/README.md
