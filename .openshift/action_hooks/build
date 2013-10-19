@@ -15,9 +15,9 @@ git config user.email "anonymouscoward@mailinator.com"
 
 SCRIPT_PATH=$(dirname `which $0`)
 
-echo $SCRIPT_PATH
+#echo $SCRIPT_PATH
 
-source $SCRIPT_PATH/env
+#source $SCRIPT_PATH/env
 
 if [ ! -d $GOLLUM_PATH ];
 then
