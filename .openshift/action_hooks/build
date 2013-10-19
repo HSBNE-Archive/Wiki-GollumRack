@@ -4,7 +4,7 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-DEBUG=false
+export DEBUG=false
 SCRIPT_PATH=$(dirname ${BASH_SOURCE})
 
 source $SCRIPT_PATH/env

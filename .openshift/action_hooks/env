@@ -2,7 +2,7 @@
 
 export GOLLUM_PATH="${OPENSHIFT_DATA_DIR}wikidata.git"
 
-if [[ $DEBUG ]]
+if [ $DEBUG ]
 then
   export
 
