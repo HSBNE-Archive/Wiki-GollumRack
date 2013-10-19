@@ -23,4 +23,4 @@ then
 fi
 
 echo "Datastore available at:"
-echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/${GOLLUM_PATH##${$OPENSHIFT_HOMEDIR}}"
+echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/${GOLLUM_PATH##$OPENSHIFT_HOMEDIR}"
