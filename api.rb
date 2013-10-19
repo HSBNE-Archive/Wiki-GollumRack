@@ -9,6 +9,6 @@ class Api < Sinatra::Base
     'True'
   end
   get '/api/scripts/clone' do
-    liquid :clone, :locals => { :env => ENV.to_hash }
+    liquid :clone, :views => 'api/views', :locals => { :env => ENV.to_hash }
   end
 end
