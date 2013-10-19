@@ -14,7 +14,7 @@ git config user.email "anonymouscoward@mailinator.com"
 
 GOLLUM_PATH=$OPENSHIFT_DATA_DIR/wikidata.git
 
-if [ ! -d $GOLLUM_PATH];
+if [ ! -d $GOLLUM_PATH ];
 then
   echo "Creating Wiki Datastore"
   mkdir $GOLLUM_PATH
