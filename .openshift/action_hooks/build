@@ -7,6 +7,7 @@
 export
 
 cd $BARE_REPO
+echo $(pwd)
 git config user.name "Anonymous Coward"
 git config user.email "anonymouscoward@mailinator.com"
 ## to set the Git user we need to manually edit the config file. Using 'git config user.name "John Doe" does not work
