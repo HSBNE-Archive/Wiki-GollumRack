@@ -4,7 +4,7 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-export
+# export
 
 cd $OPENSHIFT_HOMEDIR/git/$OPENSHIFT_APP_NAME.git
 echo "DIR changed to:"
