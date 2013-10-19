@@ -1,6 +1,10 @@
 #!/bin/bash
 
-export GOLLUM_PATH="${OPENSHIFT_DATA_DIR}wikidata.git"
+SCRIPT_PATH=$(dirname ${BASH_SOURCE})
+source $SCRIPT_PATH/config
+
+export GOLLUM_DATA_PATH="${OPENSHIFT_DATA_DIR}${CONFIG_DATANAME}"
+export GOLLUM_DATA_URL=${GOLLUM_PATH##$OPENSHIFT_HOMEDIR}
 
 if [[ ! -z $DEBUG ]] && $DEBUG
 then

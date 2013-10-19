@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export DEBUG=false
+
+export CONFIG_DATANAME="wikidata.git"

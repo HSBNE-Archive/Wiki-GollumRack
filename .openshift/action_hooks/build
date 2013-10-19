@@ -9,15 +9,15 @@ SCRIPT_PATH=$(dirname ${BASH_SOURCE})
 
 source $SCRIPT_PATH/env
 
-if [ ! -d $GOLLUM_PATH ];
+if [ ! -d $GOLLUM_DATA_PATH ];
 then
   echo "Creating Wiki Datastore"
-  mkdir $GOLLUM_PATH
-  cd $GOLLUM_PATH
+  mkdir $GOLLUM_DATA_PATH
+  cd $GOLLUM_DATA_PATH
   git --bare init
   git config user.name "Anonymous Coward"
   git config user.email "anonymouscoward@mailinator.com"
 fi
 
 echo "Datastore available at:"
-echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/${GOLLUM_PATH##$OPENSHIFT_HOMEDIR}"
+echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/$GOLLUM_DATA_URL"
