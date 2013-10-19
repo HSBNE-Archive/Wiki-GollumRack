@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ ! -z $DEBUG ]] && $DEBUG
+then
+  export
+
+  echo
+  echo "debug HOOK_PATH=$(dirname ${BASH_SOURCE}) "
+  echo
+fi
+

@@ -1,20 +1,11 @@
 #!/bin/bash
 
 SCRIPT_PATH=$(dirname ${BASH_SOURCE})
+
 source $SCRIPT_PATH/config
 
 export GOLLUM_DATA_PATH="${OPENSHIFT_DATA_DIR}${CONFIG_DATANAME}"
 export GOLLUM_DATA_URL=${GOLLUM_DATA_PATH##$OPENSHIFT_HOMEDIR}
 
-if [[ ! -z $DEBUG ]] && [[ -z $ENVSET ]] && $DEBUG
-then
-  export
-
-  echo
-  echo "debug HOOK_PATH=$(dirname ${BASH_SOURCE}) "
-  echo
-
-  export DEBUG=false
-  export ENVSET=true
-fi
-
+export GOLLUM_APP_PATH=$OPENSHIFT_HOMEDIR/git/$OPENSHIFT_APP_NAME.git
+export GOLLUM_APP_URL=${GOLLUM_APP_PATH##$OPENSHIFT_HOMEDIR}

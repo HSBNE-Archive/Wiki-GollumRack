@@ -9,6 +9,8 @@ SCRIPT_PATH=$(dirname ${BASH_SOURCE})
 
 source $SCRIPT_PATH/env
 
+source $SCRIPT_PATH/debug
+
 if [ ! -d $GOLLUM_DATA_PATH ];
 then
   echo "Creating Wiki Datastore"
