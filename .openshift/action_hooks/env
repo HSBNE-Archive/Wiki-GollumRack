@@ -6,7 +6,7 @@ source $SCRIPT_PATH/config
 export GOLLUM_DATA_PATH="${OPENSHIFT_DATA_DIR}${CONFIG_DATANAME}"
 export GOLLUM_DATA_URL=${GOLLUM_DATA_PATH##$OPENSHIFT_HOMEDIR}
 
-if [[ ! -z $DEBUG ]] && $DEBUG
+if [[ ! -z $DEBUG ]] && [[ -z $ENVSET ]] && $DEBUG
 then
   export
 
@@ -15,5 +15,6 @@ then
   echo
 
   export DEBUG=false
+  export ENVSET=true
 fi
 
