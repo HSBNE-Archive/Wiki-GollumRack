@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "## Cloning the Gollum Wiki Application"
+git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/git/{{ env.OPENSHIFT_APP_NAME }}.git gollum
+
+echo "## Cloning the Gollum Wiki Data"
+git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/{{ GOLLUM_DATA_URL }} gollum-data
+
+echo "You've cloned the HSBNE Wiki!"
+echo "I'm going to open the README for you"
+read -n 1 -s
+less "README.md"

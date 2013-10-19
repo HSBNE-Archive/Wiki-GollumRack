@@ -1,10 +1,11 @@
 require 'sinatra/base'
 
-class Api < Sinatra::Base
-  set :sessions, true
-  set :foo, 'bar'
+configure do
+  set :views, 'api/views'
+end
 
-  get '/api/test' do
-    'Hello world!'
+class Api < Sinatra::Base
+  get '/api/clone' do
+    liquid :clone, :locals => { :env => ENV.to_hash }
   end
 end
