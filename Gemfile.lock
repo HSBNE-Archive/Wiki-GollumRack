@@ -14,7 +14,7 @@ GIT
     mustache (0.99.4)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://mirror1.ops.rhcloud.com/mirror/ruby/
   specs:
     backports (3.3.5)
     blankslate (3.1.2)
