@@ -9,8 +9,8 @@ export
 cd $OPENSHIFT_HOMEDIR/git/$OPENSHIFT_APP_NAME.git
 echo "DIR changed to:"
 echo $(pwd)
-#git config user.name "Anonymous Coward"
-#git config user.email "anonymouscoward@mailinator.com"
+git config user.name "Anonymous Coward"
+git config user.email "anonymouscoward@mailinator.com"
 ## to set the Git user we need to manually edit the config file. Using 'git config user.name "John Doe" does not work
 #echo "[user]" >> config
 #echo "        name = Anonymous Coward" >> config
