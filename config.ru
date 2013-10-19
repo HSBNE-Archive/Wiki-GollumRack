@@ -3,7 +3,7 @@ require "rubygems"
 Bundler.require(:default)
 
 require "gollum/frontend/app"
-require "api"
+require "./api.rb"
 #require 'omniauth/strategies/twitter'
 #require 'omniauth/strategies/open_id'
 
