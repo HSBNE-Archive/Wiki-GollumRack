@@ -15,7 +15,14 @@
 
 #SCRIPT_PATH=$(dirname `which $0`)
 
-echo $0
+echo
+echo "# arguments called with ---->  ${@}     "
+echo "# \$1 ---------------------->  $1       "
+echo "# \$2 ---------------------->  $2       "
+echo "# path to me --------------->  ${0}     "
+echo "# parent path -------------->  ${0%/*}  "
+echo "# my name ------------------>  ${0##*/} "
+echo
 #echo $SCRIPT_PATH
 #cat $SCRIPT_PATH/env
 #source $SCRIPT_PATH/env
