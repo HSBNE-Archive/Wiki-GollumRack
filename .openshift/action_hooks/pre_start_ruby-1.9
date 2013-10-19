@@ -13,18 +13,6 @@
 # Application start and stop is subject to different timeouts
 # throughout the system.
 
-#SCRIPT_PATH=$(dirname `which $0`)
+SCRIPT_PATH=$(dirname ${BASH_SOURCE})
 
-echo
-echo "# arguments called with ---->  ${@}                      "
-echo "# \$1 ---------------------->  $1                        "
-echo "# \$2 ---------------------->  $2                        "
-echo "# path to me --------------->  ${0}                      "
-echo "# parent path -------------->  ${0%/*}                   "
-echo "# my name ------------------>  ${0##*/}                  "
-echo "# BASH_SOURCE -------------->  ${BASH_SOURCE}            "
-echo "# dirname BASH_SOURCE ------>  $(dirname ${BASH_SOURCE}) "
-echo
-#echo $SCRIPT_PATH
-#cat $SCRIPT_PATH/env
-#source $SCRIPT_PATH/env
+source $SCRIPT_PATH/env

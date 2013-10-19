@@ -4,20 +4,10 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-# export
+DEBUG=false
+SCRIPT_PATH=$(dirname ${BASH_SOURCE})
 
-cd $OPENSHIFT_HOMEDIR/git/$OPENSHIFT_APP_NAME.git
-echo "DIR changed to:"
-echo $(pwd)
-git config user.name "Anonymous Coward"
-git config user.email "anonymouscoward@mailinator.com"
-
-
-SCRIPT_PATH=$(dirname `which $0`)
-
-#echo $SCRIPT_PATH
-
-#source $SCRIPT_PATH/env
+source $SCRIPT_PATH/env
 
 if [ ! -d $GOLLUM_PATH ];
 then
