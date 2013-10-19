@@ -26,8 +26,7 @@ require "./api.rb"
 #end
 
 if ENV.has_key? 'OPENSHIFT_APP_NAME'
-  #Precious::App.set(:gollum_path, '/var/lib/openshift/51626b15e0b8cdc04d000251/git/gollum.git')
-  Precious::App.set(:gollum_path, ENV['GOLLUM_PATH'])
+  Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
 else
   Precious::App.set(:gollum_path, '../gollum-data')
 end
