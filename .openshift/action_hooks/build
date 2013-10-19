@@ -11,7 +11,15 @@ echo "DIR changed to:"
 echo $(pwd)
 git config user.name "Anonymous Coward"
 git config user.email "anonymouscoward@mailinator.com"
-## to set the Git user we need to manually edit the config file. Using 'git config user.name "John Doe" does not work
-#echo "[user]" >> config
-#echo "        name = Anonymous Coward" >> config
-#echo "        email = anonymouscoward@mailinator.com" >> config
+
+GOLLUM_PATH=$OPENSHIFT_DATA_DIR/wikidata.git
+
+if [ ! -d $GOLLUM_PATH];
+then
+  echo "Creating Wiki Datastore"
+  mkdir $GOLLUM_PATH
+  cd $GOLLUM_PATH
+  git init
+  echo "Datastore available at:"
+  echo "ssh://$OPENSHIFT_APP_UUID@$OPENSHIFT_APP_DNS/~/${GOLLUM_PATH%%${OPENSHIFT_HOMEDIR}}"
+fi
