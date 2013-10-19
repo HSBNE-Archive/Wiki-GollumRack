@@ -8,7 +8,7 @@ git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/{{ en
 cd $BASEPATH
 
 echo "## Cloning the Gollum Wiki Data"
-git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/{{ GOLLUM_DATA_URL }} gollum-data
+git clone ssh://{{ env.OPENSHIFT_APP_UUID }}@{{ env.OPENSHIFT_APP_DNS }}/~/{{ env.GOLLUM_DATA_URL }} gollum-data
 
 echo "You've cloned the HSBNE Wiki!"
 echo ""
