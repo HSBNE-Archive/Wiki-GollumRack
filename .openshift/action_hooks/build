@@ -12,7 +12,7 @@ echo $(pwd)
 git config user.name "Anonymous Coward"
 git config user.email "anonymouscoward@mailinator.com"
 
-GOLLUM_PATH=${$OPENSHIFT_DATA_DIR}wikidata.git
+GOLLUM_PATH="${OPENSHIFT_DATA_DIR}wikidata.git"
 
 if [ ! -d $GOLLUM_PATH ];
 then
