@@ -2,14 +2,17 @@
 
 export GOLLUM_PATH="${OPENSHIFT_DATA_DIR}wikidata.git"
 
+echo "env"
+echo $DEBUG
+
 if $DEBUG
 then
   export
 
   echo
-  echo "# Hook path ------>  $(dirname ${BASH_SOURCE}) "
+  echo "debug HOOK_PATH=$(dirname ${BASH_SOURCE}) "
   echo
 
-  DEBUG=false
+  export DEBUG=false
 fi
 
