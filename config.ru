@@ -34,5 +34,5 @@ end
 
 Precious::App.set(:wiki_options, {})
 
-run Api::App
+use Api
 run Precious::App
