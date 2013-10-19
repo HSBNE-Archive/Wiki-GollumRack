@@ -3,6 +3,7 @@ require "rubygems"
 Bundler.require(:default)
 
 require "gollum/frontend/app"
+require "api"
 #require 'omniauth/strategies/twitter'
 #require 'omniauth/strategies/open_id'
 
@@ -32,4 +33,6 @@ else
 end
 
 Precious::App.set(:wiki_options, {})
+
+run Api::App
 run Precious::App
