@@ -20,6 +20,8 @@ then
   mkdir $GOLLUM_PATH
   cd $GOLLUM_PATH
   git --bare init
+  git config user.name "Anonymous Coward"
+  git config user.email "anonymouscoward@mailinator.com"
 fi
 
 echo "Datastore available at:"
