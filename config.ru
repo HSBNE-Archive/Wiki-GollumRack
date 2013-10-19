@@ -26,9 +26,9 @@ require "gollum/frontend/app"
 
 if ENV.has_key? 'OPENSHIFT_APP_NAME'
   #Precious::App.set(:gollum_path, '/var/lib/openshift/51626b15e0b8cdc04d000251/git/gollum.git')
-  Precious::App.set(:gollum_path, "#{ENV['OPENSHIFT_HOMEDIR']}/git/#{ENV['OPENSHIFT_APP_NAME']}.git")
+  Precious::App.set(:gollum_path, ENV['GOLLUM_PATH'])
 else
-  Precious::App.set(:gollum_path, '.')
+  Precious::App.set(:gollum_path, '../gollum-data')
 end
 
 Precious::App.set(:wiki_options, {})
