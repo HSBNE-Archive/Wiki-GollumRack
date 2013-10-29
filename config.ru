@@ -4,6 +4,7 @@ Bundler.require(:default)
 
 require "gollum/frontend/app"
 require "./api.rb"
+require "pry-remote"
 #require 'omniauth/strategies/twitter'
 #require 'omniauth/strategies/open_id'
 
