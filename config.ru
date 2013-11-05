@@ -31,7 +31,9 @@ else
   Precious::App.set(:gollum_path, '../gollum-data')
 end
 
-Precious::App.set(:wiki_options, {})
+Precious::App.set(:wiki_options, {
+  :live_preview => false
+})
 
 use Api
 run Precious::App
