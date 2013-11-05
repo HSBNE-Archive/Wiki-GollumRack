@@ -7,12 +7,10 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    charlock_holmes (0.6.9.4)
     diff-lcs (1.2.4)
     github-markdown (0.5.5)
     github-markup (0.7.5)
     gitlab-grit (2.6.0)
-      charlock_holmes (~> 0.6.9)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
