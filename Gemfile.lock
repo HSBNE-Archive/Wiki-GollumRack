@@ -63,7 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gollum (= 2.5.2)
+  gollum
   mustache!
   omniauth
   omnigollum

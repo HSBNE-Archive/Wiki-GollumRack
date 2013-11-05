@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'gollum', '2.5.2'
+gem 'gollum'
 gem 'omniauth'
 gem 'omnigollum'
 
