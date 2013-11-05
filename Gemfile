@@ -1,13 +1,8 @@
-# This is the standard gem repository. If you want to use this, update Gemfile.lock as  well.
-# source "https://rubygems.org"
+source "https://rubygems.org"
 
-# This is the gem mirror which is faster on production
-source 'http://mirror1.ops.rhcloud.com/mirror/ruby/'
-
-# gem "rails"
-gem 'rack', '1.1.0'
-gem 'liquid'
-gem 'gollum'
-gem 'mustache', :git => 'https://github.com/defunkt/mustache.git'
+gem 'gollum', '2.5.2'
 gem 'omniauth'
-gem 'omnigollum', :git => 'https://github.com/arr2036/omnigollum.git'
+gem 'omnigollum'
+
+# Custom mustache for omnigollum
+gem 'mustache', :git => 'https://github.com/defunkt/mustache.git'
