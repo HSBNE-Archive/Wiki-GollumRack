@@ -25,11 +25,7 @@ require "./api.rb"
   #[username, password] == ['wiki', 'wiki']
 #end
 
-if ENV.has_key? 'OPENSHIFT_APP_NAME'
-  Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
-else
-  Precious::App.set(:gollum_path, '../gollum-data')
-end
+Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
 
 Precious::App.set(:wiki_options, {
   :live_preview => false
