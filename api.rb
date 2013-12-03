@@ -13,7 +13,8 @@ class Api < Sinatra::Base
 
   get '/api/scripts/clone' do
     content_type :text
-    liquid :clone, :locals => { :env => ENV.to_hash }
+    'missing - I\'ve removed this pending setup on digital ocean vs openshift'
+    #liquid :clone, :locals => { :env => ENV.to_hash }
   end
 
 end
