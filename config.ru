@@ -1,5 +1,7 @@
 require "rubygems"
 require "omniauth"
+
+Bundler.setup
 Bundler.require(:default)
 
 require 'gollum/app'
