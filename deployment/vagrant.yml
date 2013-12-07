@@ -1,0 +1,10 @@
+---
+
+- hosts: development
+  remote_user: "{{ user }}"
+  sudo: yes
+  roles:
+    - ansible
+    - vagrant
+    - gollum
+

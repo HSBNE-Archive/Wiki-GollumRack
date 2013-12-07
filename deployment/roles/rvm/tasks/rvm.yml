@@ -1,0 +1,32 @@
+---
+
+- name: Install prerequisite packages for RVM
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    # RVM Packages
+    - libsqlite3-dev
+    - sqlite3
+    - autoconf
+    - libgdbm-dev
+    - libncurses5-dev
+    - automake
+    - bison
+    - libffi-dev
+    - libreadline6-dev
+    - pkg-config
+    - gawk
+    - g++
+    - make
+    - libyaml-dev
+    - libtool
+
+### Set up Ruby/RVM for {{ rvm_user }}
+
+- name: install RVM
+  sudo_user: "{{ rvm_user }}"
+  shell: \curl -L https://get.rvm.io | bash -s stable --auto-dotfiles creates=/home/{{ rvm_user }}/.rvm chdir=/home/{{ rvm_user }}
+
+- name: Templated ~/.gemrc
+  sudo_user: "{{ rvm_user }}"
+  template: src=gemrc.j2 dest=/home/{{ rvm_user }}/.gemrc owner={{ rvm_user }} group={{ rvm_user }}
+

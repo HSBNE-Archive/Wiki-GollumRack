@@ -1,0 +1,151 @@
+---
+### Install Prerequisite packages
+
+- name: Install prerequisite packages for Discourse
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - build-essential
+    - libssl-dev
+    - libyaml-dev
+    - libtool
+    - libxslt1-dev
+    - libxml2-dev
+    - libpq-dev
+    - gawk
+    - curl
+    - pngcrush
+    - imagemagick
+    - python-software-properties # TODO: Ubuntu >= 12.10 needs software-properties-common. Detect this and change?
+
+### Install the Discourse source
+
+- name: Create Discourse location
+  file: path={{ discourse.path }} owner={{ discourse.user }} group={{ discourse.user }} mode=0755 state=directory
+
+- name: Git Clone Discourse
+  sudo_user: "{{ discourse.user }}"
+  git: repo=git://github.com/discourse/discourse.git dest={{ discourse.path }} version={{discourse.version}}
+  register: git_cloned
+
+- include: ../../rvm/tasks/bundler.yml
+  vars:
+    rvm_user: "{{ discourse.user }}"
+    ruby_version: "{{ ruby.global }}"
+    bundler_path: "{{ discourse.path }}"
+
+### Set up the Discourse database
+
+- name: Create Discourse postgres user (needs to lock down attributes / best practices)
+  postgresql_user: user={{ discourse.user }} password={{ discourse.prod.dbpasswd }} role_attr_flags=SUPERUSER
+  sudo_user: postgres
+  notify: reload postgres
+
+- name: Create Discourse db
+  postgresql_db: name={{ discourse.prod.db }} 
+    encoding='UTF-8' lc_collate="en_US.utf8" lc_ctype="en_US.utf8" template='template0' owner={{ discourse.user }}
+  sudo_user: postgres
+  notify: reload postgres
+
+### Configure Discourse, Gems, and Nginx
+
+- name: Install Discourse templates
+  sudo_user: "{{ discourse.user }}"
+  template: src={{ item.src }} dest={{ discourse.path }}/{{ item.dest }}
+  tags:
+    - deploy_discourse
+  with_items:
+    - { src: 'database.yml.j2', dest: 'config/database.yml' }
+    - { src: 'redis.yml.j2', dest: 'config/redis.yml' }
+    - { src: 'discourse.pill.j2', dest: 'config/discourse.pill' }
+    - { src: 'production.rb.j2', dest: 'config/environments/production.rb' }
+
+- name: Install Discourse Nginx.conf
+  template: src='nginx.conf.j2' dest='/etc/nginx/conf.d/discourse.conf'
+  notify: restart nginx
+
+- name: Copy custom image assets
+  tags: 
+    - deploy_discourse
+  copy: src=assets/images/ dest={{ discourse.path}}/app/assets/images/ owner={{ discourse.user }} group=discourse mode=644
+
+### Specific steps for setting up the Discourse software
+
+- name: create secret token if nonexistent (add file conditional execution)
+  sudo_user: "{{ discourse.user }}"
+  shell: /home/{{discourse.user}}/.rvm/bin/rvm {{ruby.global}} exec bundle exec rake secret > {{discourse.path}}/.secret_token chdir={{ discourse.path }} creates={{ discourse.path }}/.secret_token
+  environment:
+    RAILS_ENV: production
+
+- name: initialize database from project dir (relies on rake for idempotency)
+  sudo_user: "{{ discourse.user }}"
+  command: /home/{{discourse.user}}/.rvm/bin/rvm {{ruby.global}} exec bundle exec rake db:migrate chdir={{ discourse.path }}
+  environment:
+    RAILS_ENV: production
+    RUBY_GC_MALLOC_LIMIT: "{{ ruby.gc_malloc_limit }}"
+
+- name: Upload Configuration Script
+  tags: 
+    - deploy_discourse
+  template: src="initialize.rb.j2" dest=/home/{{ discourse.user }}/initialize.rb group=discourse owner={{ discourse.user }} mode=774
+
+- name: Execute Configuration Script
+  tags: 
+    - deploy_discourse
+  shell: /home/{{discourse.user}}/.rvm/bin/rvm {{ruby.global}} exec bundle exec rails runner /home/{{ discourse.user }}/initialize.rb chdir={{ discourse.path }}
+  sudo_user: "{{ discourse.user }}"
+  environment:
+    RAILS_ENV: production
+
+- name: Cleanup Configuration Script
+  tags: 
+    - deploy_discourse
+  file: path=/home/{{ discourse.user }}/initialize.rb state=absent
+
+- name: precompile assets
+  tags: 
+    - deploy_discourse
+  sudo_user: "{{ discourse.user }}"
+  command: /home/{{discourse.user}}/.rvm/bin/rvm {{ruby.global}} exec bundle exec rake assets:precompile chdir={{ discourse.path }}
+  environment:
+    RAILS_ENV: production
+    RUBY_GC_MALLOC_LIMIT: "{{ ruby.gc_malloc_limit }}"
+
+### Install and Configure the BluePill Gem
+
+- name: Install bluepill gem (gem for idempotency?)
+  sudo_user: "{{ discourse.user }}"
+  command: /home/{{discourse.user}}/.rvm/bin/gem install bluepill creates=/home/{{discourse.user}}/.rvm/gems/ruby-{{ruby.global}}/bin/bluepill
+  tags: bluepill
+
+- name: Rvm wrappers for booting bluepill
+  sudo_user: "{{ discourse.user }}"
+  command: /home/{{discourse.user}}/.rvm/bin/rvm wrapper {{ruby.global}} bootup bluepill chdir={{ discourse.path }}
+
+- name: Rvm wrappers for booting bundle
+  sudo_user: "{{ discourse.user }}"
+  command: /home/{{discourse.user}}/.rvm/bin/rvm wrapper {{ruby.global}} bootup bundle chdir={{ discourse.path }}
+
+- name: Add bluepill alias to Discourse user
+  sudo_user: "{{ discourse.user }}"
+  lineinfile: dest=/home/{{ discourse.user }}/.bash_aliases create=yes regexp="^alias bluepill" line='alias bluepill="NOEXEC_DISABLE=1 bluepill --no-privileged -c ~/.bluepill"'
+  tags: bluepill
+
+### Start the software
+
+- name: Installing reboot cron for Discourse
+  sudo_user: "{{ discourse.user }}"
+  cron: name="discourse" 
+        special_time=reboot 
+        job="RUBY_GC_MALLOC_LIMIT={{ruby.gc_malloc_limit}} RAILS_ROOT={{discourse.path}} RAILS_ENV=production NUM_WEBS=2 /home/{{discourse.user}}/.rvm/bin/bootup_bluepill --no-privileged -c /home/{{discourse.user}}/.bluepill load {{discourse.path}}/config/discourse.pill"
+
+- name: Start up Discourse
+  tags: 
+    - deploy_discourse
+  sudo_user: "{{ discourse.user }}"
+  command: /home/{{discourse.user}}/.rvm/bin/rvm {{ruby.global}} exec bluepill --no-privileged -c /home/{{discourse.user}}/.bluepill load {{discourse.path}}/config/discourse.pill chdir={{ discourse.path }}
+  environment:
+    RAILS_ENV: production
+    RAILS_ROOT: "{{ discourse.path }}"
+    NUM_WEBS: 2
+    RUBY_GC_MALLOC_LIMIT: "{{ ruby.gc_malloc_limit }}"
+

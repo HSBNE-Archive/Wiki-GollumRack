@@ -1,0 +1,8 @@
+### Install Prerequisite packages
+
+- name: Install Ansible Requirements
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - python-pycurl
+
+

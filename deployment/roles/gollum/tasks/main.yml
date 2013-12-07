@@ -1,0 +1,34 @@
+---
+
+- name: Install prerequisite packages for Gollum
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - libicu-dev
+
+### Install the Gollum source
+
+- name: Create Gollum location
+  tags:
+    - deploy_gollum
+  file: path={{ gollum.path }} owner={{ gollum.user }} group={{ gollum.user }} mode=0755 state=directory
+
+- name: Create Gollum data location
+  file: path={{ gollum.env.GOLLUM_DATA_PATH }} owner={{ gollum.user }} group={{ gollum.user }} mode=0755 state=directory
+
+- include: ../../rvm/tasks/bundler.yml
+  tags:
+    - deploy_gollum
+  vars:
+    rvm_user: "{{ gollum.user }}"
+    ruby_version: "{{ ruby.global }}"
+    bundler_path: "{{ gollum.path }}"
+
+- name: Git Init Gollum Data
+  sudo_user: "{{ gollum.user }}"
+  command: git init --bare chdir={{ gollum.env.GOLLUM_DATA_PATH }} creates={{ gollum.env.GOLLUM_DATA_PATH }}/HEAD
+
+- name: Install Gollum Nginx.conf
+  tags:
+    - deploy_gollum
+  template: src='nginx.conf.j2' dest='/etc/nginx/conf.d/gollum.conf'
+  notify: restart nginx

@@ -1,0 +1,6 @@
+### Install Prerequisite packages
+
+- name: Install Git packages
+  apt: pkg=git state=present update_cache=yes
+
+

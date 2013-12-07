@@ -1,0 +1,8 @@
+---
+
+- include: rvm.yml
+  when: rvm_user is defined
+- include: ruby.yml
+  when: rvm_user is defined and ruby_version is defined
+- include: bundler.yml
+  when: rvm_user is defined and ruby_version is defined and bundler_path is defined

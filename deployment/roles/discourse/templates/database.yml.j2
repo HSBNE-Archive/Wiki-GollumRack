@@ -1,0 +1,26 @@
+production:
+  adapter: postgresql
+  database: {{ discourse.prod.db }}
+  username: {{ discourse.user }}
+  password: {{ discourse.prod.dbpasswd }}
+  # host: dbhost		# if not localhost
+  pool: 5 	# size of DB connection pool *per process*
+  timeout: 5000
+  db_id: {{ discourse.prod.id }}
+  host_names:
+    ### If you change this setting you will need to
+    ###   - restart sidekiq if you change this setting
+    ###   - rebake all to posts using: `RAILS_ENV=production bundle exec rake posts:rebake`
+    - {{ discourse.prod.hostname }}
+
+test:
+  adapter: postgresql
+  database: {{ discourse.test.db }}
+  username: {{ discourse.user }}
+  password: {{ discourse.test.dbpasswd }}
+  min_messages: warning
+  host: localhost
+  pool: 5
+  timeout: 5000
+  host_names:
+    - localhost

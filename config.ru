@@ -1,29 +1,34 @@
 require "rubygems"
-#require "omniauth"
+require "omniauth"
 Bundler.require(:default)
 
 require 'gollum/app'
+require 'omniauth/strategies/google_oauth2'
 require "./api.rb"
-#require 'omniauth/strategies/twitter'
-#require 'omniauth/strategies/open_id'
 
-#options = {
-#  # OmniAuth::Builder block is passed as a proc
-#  :providers => Proc.new do
-#    #provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
-#    #provider :open_id, OpenID::Store::Filesystem.new('/tmp')
-#  end,
-#  :dummy_auth => false
-#}
+options = {
+  :providers => Proc.new do
+    provider :google_oauth2, ENV['GOLLUM_AUTH_GOOGLE_CLIENTID'], ENV['GOLLUM_AUTH_GOOGLE_SECRET']
+  end,
+  :dummy_auth => false,
+  :protected_routes => [
+    '/members/*',
+    '/revert/*',
+    '/revert',
+    '/create/*',
+    '/create',
+    '/edit/*',
+    '/edit',
+    '/rename/*',
+    '/rename',
+    '/delete/*',
+    '/delete'
+  ]
+}
 
-# :omnigollum options *must* be set before the Omnigollum extension is registered
-#Precious::App.set(:omnigollum, options)
+Precious::App.set(:omnigollum, options)
 
-#Precious::App.register Omnigollum::Sinatra
-
-#use Rack::Auth::Basic, "My wiki - authenticate!" do |username, password|
-  #[username, password] == ['wiki', 'wiki']
-#end
+Precious::App.register Omnigollum::Sinatra
 
 Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
 

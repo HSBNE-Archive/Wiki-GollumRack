@@ -1,0 +1,31 @@
+user: vagrant
+hostname: gollum.dev
+
+gollum:
+  user: vagrant
+  path: /vagrant
+  hostname: gollum.dev
+  version: master
+  env:
+    GOLLUM_DATA_PATH: /var/data/gollum.git
+    GOLLUM_AUTH_GOOGLE_CLIENTID: "{{ lookup('file', inventory_dir + '/credentials/' + inventory_hostname + '/googleclientid') }}"
+    GOLLUM_AUTH_GOOGLE_SECRET: "{{ lookup('file', inventory_dir + '/credentials/' + inventory_hostname + '/googlesecret') }}"
+
+users:
+  - name: gollum
+    comment: 'gollum user'
+    home: /home/gollum
+    uid: 1011
+    shell: /bin/bash
+    group: gollum
+    groups:
+    - gollum
+    - www-data
+    append: no
+
+ruby:
+  versions: 
+     - 2.0.0-p247
+  global: 2.0.0-p247
+  gc_malloc_limit: 90000000
+  num_webs: 2

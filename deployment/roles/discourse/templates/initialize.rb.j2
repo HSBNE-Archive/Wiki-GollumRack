@@ -1,0 +1,37 @@
+User.find_or_create_by(email: 'jhogendorn@gmail.com') do |u|
+  u.name = "Joshua Hogendorn"
+  u.username = "devians"
+  u.username_lower = "devians"
+  u.email = "jhogendorn@gmail.com"
+  u.password = SecureRandom.hex
+  u.bio_raw = ""
+  u.active = true
+  u.admin = true
+  u.moderator = true
+  u.email_direct = false
+  u.approved = true
+  u.email_private_messages = false
+end
+
+SiteSetting.site_description = 'Discourse for Hackerspace Brisbane'
+SiteSetting.contact_email = 'infrastructure@hsbne.org'
+SiteSetting.notification_email = 'infrastructure@hsbne.org'
+SiteSetting.site_contact_username = 'Infrastructure'
+SiteSetting.logo_url = '/assets/logo.png'
+SiteSetting.logo_small_url = '/assets/logo-small.png'
+SiteSetting.favicon_url = '/assets/favicon.ico'
+SiteSetting.apple_touch_icon_url = '/assets/apple-touch-icon.png'
+SiteSetting.title = 'HSBNE Discourse'
+SiteSetting.company_full_name = 'HSBNE Inc'
+SiteSetting.company_short_name = 'HSBNE'
+SiteSetting.company_domain = 'hsbne.org'
+
+SiteSetting.enable_facebook_logins = false
+SiteSetting.enable_twitter_logins = false
+SiteSetting.enable_yahoo_logins = false
+SiteSetting.enable_cas_logins = false
+SiteSetting.enable_github_logins = false
+SiteSetting.enable_persona_logins = false
+
+SiteSetting.enforce_global_nicknames = false
+

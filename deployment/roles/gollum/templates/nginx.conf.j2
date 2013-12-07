@@ -1,0 +1,20 @@
+server {
+
+  listen 80;
+
+  server_name {{ gollum.hostname }};
+
+  # path to gollum's public directory
+  set $public {{ gollum.path }}/public;
+
+  location / {
+    root $public;
+    passenger_enabled on;
+    passenger_ruby /home/{{ gollum.user }}/.rvm/wrappers/ruby-{{ ruby.global }}/ruby;
+
+    {% for name, value in gollum.env.iteritems() %}
+    passenger_set_cgi_param {{ name }} {{ value }};
+    {% endfor %}
+  }
+}
+

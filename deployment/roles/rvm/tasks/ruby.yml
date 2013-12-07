@@ -1,0 +1,7 @@
+---
+
+- name: install Ruby without package installs that might require sudo
+  sudo_user: "{{ rvm_user }}"
+  # We manage package installation ourselves, so this doesnt need sudo hence autolibs=2
+  command: /home/{{ rvm_user }}/.rvm/bin/rvm install --autolibs=2 --default {{ ruby_version }} creates=/home/{{ rvm_user }}/.rvm/rubies/ruby-{{ ruby_version }}
+

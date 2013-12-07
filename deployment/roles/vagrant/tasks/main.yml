@@ -1,0 +1,10 @@
+### Install Prerequisite packages
+
+- name: Install prerequisite packages for Vagrant
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - curl
+    - libcurl4-openssl-dev
+    - bsdtar
+    - nfs-common
+
