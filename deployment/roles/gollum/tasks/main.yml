@@ -1,9 +1,12 @@
 ---
 
 - name: Install prerequisite packages for Gollum
+  tags:
+    - deploy_gollum
   apt: pkg={{ item }} state=present update_cache=yes
   with_items:
     - libicu-dev
+    - curl
 
 ### Install the Gollum source
 

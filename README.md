@@ -25,8 +25,8 @@ history cluttered with wiki edits.
 
 ### OmniGollum
 
-Not set up just yet, the goal is to have it auth via at least google to have
-restricted 'member only' pages etc.
+This is configured with omnigollum. Part of that is that the gollum gem utilises
+my own fork of gollum.
 
 ### API Application
 

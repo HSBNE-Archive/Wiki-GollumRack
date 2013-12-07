@@ -4,6 +4,17 @@ GIT
   specs:
     mustache (0.99.5)
 
+GIT
+  remote: https://github.com/jhogendorn/gollum.git
+  revision: 8785403ef04588c712cfa4117e29557fd5b70103
+  specs:
+    gollum (2.5.2)
+      github-markdown (~> 0.5.5)
+      gollum-lib (~> 1.0.9)
+      mustache (>= 0.99.4, < 1.0.0)
+      sinatra (~> 1.4.3)
+      useragent (~> 0.8.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -18,12 +29,6 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    gollum (2.5.2)
-      github-markdown (~> 0.5.5)
-      gollum-lib (~> 1.0.9)
-      mustache (>= 0.99.4, < 1.0.0)
-      sinatra (~> 1.4.3)
-      useragent (~> 0.8.2)
     gollum-lib (1.0.9)
       github-markup (>= 0.7.5, < 1.0.0)
       gitlab-grit (= 2.6.0)
@@ -60,7 +65,7 @@ GEM
       gollum
       mustache (~> 0.99.5)
       omniauth
-    posix-spawn (0.3.6)
+    posix-spawn (0.3.8)
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -82,7 +87,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gollum
+  gollum!
   mustache!
   omniauth
   omniauth-google-oauth2
