@@ -1,11 +1,12 @@
 require "rubygems"
-require "omniauth"
+require "bundler"
 
-Bundler.setup
 Bundler.require(:default)
 
-require 'gollum/app'
+require "omniauth"
 require 'omniauth/strategies/google_oauth2'
+
+require 'gollum/app'
 require "./api.rb"
 
 options = {
