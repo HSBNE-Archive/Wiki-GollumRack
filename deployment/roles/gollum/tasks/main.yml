@@ -17,7 +17,7 @@
 
 - name: Clear Gems
   tags:
-    - deploy_gollum
+    - rebuild_gollum
   file: path={{ gollum.path }}/vendor state=absent
 
 - include: ../../rvm/tasks/bundler.yml
@@ -42,3 +42,8 @@
   tags:
     - deploy_gollum
   service: name=nginx state=restarted
+
+- name: Restart Gollum
+  file: path={{ gollum.path }}/tmp/restart.txt state=touch
+  tags:
+    - restart_gollum

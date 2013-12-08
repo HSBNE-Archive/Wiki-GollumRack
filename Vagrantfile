@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "deployment/vagrant.yml"
     ansible.inventory_path = "deployment/hosts"
     ansible.limit = "development"
-    ansible.tags = ['deploy_gollum']
+    #ansible.tags = ['deploy_gollum', 'rebuild_gollum', 'restart_gollum']
     #ansible.verbose = 'vvvv'
   end
   
