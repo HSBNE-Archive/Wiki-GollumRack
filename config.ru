@@ -7,6 +7,7 @@ require "omniauth"
 require 'omniauth/strategies/google_oauth2'
 
 require 'gollum/app'
+require './views/layout'
 require "./api.rb"
 
 options = {
