@@ -1,12 +1,9 @@
 ---
 
 - name: Install prerequisite packages for Gollum
-  tags:
-    - deploy_gollum
   apt: pkg={{ item }} state=present update_cache=yes
   with_items:
     - libicu-dev
-    - curl
 
 ### Install the Gollum source
 
@@ -17,6 +14,11 @@
 
 - name: Create Gollum data location
   file: path={{ gollum.env.GOLLUM_DATA_PATH }} owner={{ gollum.user }} group={{ gollum.user }} mode=0755 state=directory
+
+- name: Clear Gems
+  tags:
+    - deploy_gollum
+  file: path={{ gollum.path }}/vendor state=absent
 
 - include: ../../rvm/tasks/bundler.yml
   tags:
@@ -35,3 +37,8 @@
     - deploy_gollum
   template: src='nginx.conf.j2' dest='/etc/nginx/conf.d/gollum.conf'
   notify: restart nginx
+
+- name: restart nginx
+  tags:
+    - deploy_gollum
+  service: name=nginx state=restarted

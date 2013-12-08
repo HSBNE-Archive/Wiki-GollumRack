@@ -4,7 +4,7 @@ hostname: gollum.dev
 gollum:
   user: vagrant
   path: /vagrant
-  hostname: gollum.dev
+  hostname: gollum.dev.com
   version: master
   env:
     GOLLUM_DATA_PATH: /var/data/gollum.git

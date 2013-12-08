@@ -36,8 +36,11 @@ Precious::App.register Omnigollum::Sinatra
 Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
 
 Precious::App.set(:wiki_options, {
-  :live_preview => false
+  :live_preview => false,
+  :css => true
 })
+
+Precious::App.settings.mustache[:templates] = './templates'
 
 use Api
 run Precious::App
