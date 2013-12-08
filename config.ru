@@ -16,7 +16,7 @@ options = {
   end,
   :dummy_auth => false,
   :protected_routes => [
-    '/members/*',
+    '/Members/*',
     '/revert/*',
     '/revert',
     '/create/*',
