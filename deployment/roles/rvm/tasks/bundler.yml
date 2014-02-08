@@ -2,7 +2,7 @@
 
 - name: install bundler
   sudo_user: "{{ rvm_user }}"
-  command: /home/{{ rvm_user }}/.rvm/bin/gem install bundler creates=/home/{{ rvm_user }}/.rvm/gems/ruby-{{ ruby_version }}/bin/bundle
+  command: /home/{{ rvm_user }}/.rvm/bin/rvm {{ ruby_version }} exec gem install bundler creates=/home/{{ rvm_user }}/.rvm/gems/ruby-{{ ruby_version }}/bin/bundle
 
 - name: Bundler install gems (first run is slow)
   sudo_user: "{{ rvm_user }}"
