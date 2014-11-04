@@ -1,4 +1,5 @@
 require 'cgi'
+require 'rack'
 
 module Precious
   module Views
@@ -16,6 +17,9 @@ module Precious
         @user.name
       end
 
+      def base_url
+        "#{@env['rack.url_scheme']}://#{@env['HTTP_HOST']}"
+      end
     end
   end
 end

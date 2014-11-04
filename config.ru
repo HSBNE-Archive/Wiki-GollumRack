@@ -35,6 +35,7 @@ Precious::App.set(:omnigollum, options)
 Precious::App.register Omnigollum::Sinatra
 
 Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
+#Precious::App.set(:base_url, ENV['GOLLUM_BASE_URL'])
 
 Precious::App.set(:wiki_options, {
   :live_preview => false,

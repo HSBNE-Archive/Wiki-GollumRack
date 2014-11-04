@@ -47,12 +47,62 @@
   </script>{{/mathjax}}
   {{#js}}<script type="text/javascript" src="{{base_url}}/custom.js"></script>{{/js}}
 
+  <link href="http://hsbne.org/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="http://hsbne.org/assets/css/styles.css" rel="stylesheet" media="screen">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
   <title>{{title}} - HSBNE Wiki</title>
 </head>
 <body>
-{{>user}}
 
-{{{yield}}}
+<div id="header" class="container">
 
+  <a href="/" class="brand pull-left">
+    <img src="http://hsbne.org/assets/img/headerlogo.png" />
+    <span>HSBNE</span>
+  </a>
+
+  <ul class="nav nav-pills pull-right">
+    <li class="btn-group">
+      <a href="http://blog.hsbne.org" class="btn btn-link" style="display:inline-block;padding-right:0px;">Blog</a>
+      <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="display:inline-block;">
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="http://blog.hsbne.org/submit">Submit Post</a></li>
+        <li><a href="http://blog.hsbne.org/archives">Archives</a></li>
+      </ul>
+    </li>
+    <li><a href="http://forum.hsbne.org">Forum</a></li>
+    <li><a href="http://wiki.hsbne.org">Wiki</a></li>
+    <li><a href="http://hsbne.org/thespace.html">Our Campus</a>
+    <li><a href="http://hsbne.org/join.html">Join Us!</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        What's on?
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="http://hsbne.org/events/">Events</a></li>
+        <li><a href="http://hsbne.org/classes/">Classes</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="http://hsbne.org/contact.html">
+        More Info
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="http://hsbne.org/contact.html">Contact Us</a></li>
+        <li><a href="http://hsbne.org/donate.html">Donate to HSBNE</a></li>
+        <li><a href="http://hsbne.org/media.html">Media Information</a></li>
+        <li><a href="http://hsbne.org/admin/">Member Information</a></li>
+        <li><a href="http://trello.com/hsbneinc">Todo on Trello</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</div>
+  {{{yield}}}
 </body>
 </html>

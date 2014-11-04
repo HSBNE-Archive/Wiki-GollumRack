@@ -10,6 +10,7 @@ gollum:
     GOLLUM_DATA_PATH: /var/data/gollum.git
     GOLLUM_AUTH_GOOGLE_CLIENTID: "{{ lookup('file', inventory_dir + '/credentials/' + inventory_hostname + '/googleclientid') }}"
     GOLLUM_AUTH_GOOGLE_SECRET: "{{ lookup('file', inventory_dir + '/credentials/' + inventory_hostname + '/googlesecret') }}"
+    RACK_ENV: development
 
 users:
   - name: gollum
