@@ -25,7 +25,7 @@ users:
 
 ruby:
   versions: 
-     - 2.0.0-p247
-  global: 2.0.0-p247
+     - 2.0.0-p594
+  global: 2.0.0-p594
   gc_malloc_limit: 90000000
   num_webs: 2
