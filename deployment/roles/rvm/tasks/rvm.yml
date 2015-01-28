@@ -22,6 +22,10 @@
 
 ### Set up Ruby/RVM for {{ rvm_user }}
 
+- name: Setup keys
+  shell: gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  sudo_user: "{{ rvm_user }}"
+
 - name: install RVM
   sudo_user: "{{ rvm_user }}"
   shell: \curl -L https://get.rvm.io | bash -s stable --auto-dotfiles creates=/home/{{ rvm_user }}/.rvm chdir=/home/{{ rvm_user }}
