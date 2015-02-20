@@ -1,14 +1,13 @@
 require "rubygems"
-require "bundler"
 
 Bundler.require(:default)
 
-require "omniauth"
+require 'omnigollum'
+require 'omniauth'
 require 'omniauth/strategies/google_oauth2'
 
 require 'gollum/app'
 require './views/layout'
-require "./api.rb"
 
 options = {
   :providers => Proc.new do
@@ -38,10 +37,10 @@ Precious::App.set(:gollum_path, ENV['GOLLUM_DATA_PATH'])
 
 Precious::App.set(:wiki_options, {
   :live_preview => false,
-  :css => true
+  :css => true,
+  :allow_editing => true,
 })
 
 Precious::App.settings.mustache[:templates] = './templates'
 
-use Api
 run Precious::App

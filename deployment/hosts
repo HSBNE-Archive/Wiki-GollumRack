@@ -1,7 +1,5 @@
 [vagrant]
-#gollum.dev.com
-#because of the hostsupdater bug, I'm reverting back to using ip's.
-192.168.33.120
+gollum.dev.com
 
 [development:children]
 vagrant
